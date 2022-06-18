@@ -4,7 +4,7 @@ const jimp = require('jimp')
 const jsQR = require('jsqr')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000 
 
 app.use(express.json())
 
