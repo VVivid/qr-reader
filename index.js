@@ -30,7 +30,8 @@ app.post("/webhook", async (req, resp) => {
         },
       );
       const filePath = data.data.result.file_path;
-      console.log(data.data.result)
+      console.log(req.body.message)
+      console.log(data.data)
       const res = await axios.get(
         `https://api.telegram.org/file/bot${botToken}/${filePath}`,
         {
