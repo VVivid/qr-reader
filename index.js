@@ -16,7 +16,6 @@ app.get("/", (req,res) => {
 })
 
 app.post("/webhook", async (req, resp) => {
-      console.log(req.body.message.photo[1])
       try {
       const msgId = req.body.message.from.id;
       const fileId = req.body.message.photo[1].file_id;
@@ -31,6 +30,7 @@ app.post("/webhook", async (req, resp) => {
         },
       );
       const filePath = data.data.result.file_path;
+      console.log(data.data.result)
       const res = await axios.get(
         `https://api.telegram.org/file/bot${botToken}/${filePath}`,
         {
