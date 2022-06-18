@@ -5,6 +5,7 @@ const jsQR = require('jsqr')
 
 const app = express();
 const port = process.env.PORT || 3000 
+const botToken = process.env.BOT_TOKEN;
 
 app.use(express.json())
 
@@ -16,11 +17,10 @@ app.get("/", (req,res) => {
 
 app.post("/webhook", async (req, resp) => {
       try {
-      const fileId = req.body.message.photo[1].file_id;
       const msgId = req.body.message.from.id;
+      const fileId = req.body.message.photo[1].file_id;
       const width = req.body.message.photo[1].width;
       const height = req.body.message.photo[1].height;
-      const botToken = process.env.BOT_TOKEN;
       const data = await axios.get(
         `https://api.telegram.org/bot${botToken}/getFile`,
         {
@@ -43,12 +43,10 @@ app.post("/webhook", async (req, resp) => {
         chat_id: msgId,
         text: decode,
       });
-      resp.sendStatus(200)
-      return
     } catch (error) {
       console.log(error);
-      resp.sendStatus(200)
     }
+      resp.sendStatus(200)
 });
 
 app.listen(port, () => {
