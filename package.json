@@ -1,0 +1,12 @@
+{
+  "name": "qr-reader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "jimp": "^0.16.1",
+    "jsqr": "^1.4.0"
+  }
+}
