@@ -14,8 +14,7 @@ app.get("/", (req,res) => {
     })
 })
 
-app.post("/webhook", async (req, res) => {
-     console.log(req.body.message)
+app.post("/webhook", async (req, resp) => {
       try {
       const fileId = req.body.message.photo[1].file_id;
       const msgId = req.body.message.from.id;
@@ -44,11 +43,11 @@ app.post("/webhook", async (req, res) => {
         chat_id: msgId,
         text: decode,
       });
-      res.sendStatus(200)
+      resp.sendStatus(200)
       return
     } catch (error) {
       console.log(error);
-      res.sendStatus(200)
+      resp.sendStatus(200)
     }
 });
 
