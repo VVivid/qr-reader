@@ -16,6 +16,7 @@ app.get("/", (req,res) => {
 })
 
 app.post("/webhook", async (req, resp) => {
+      console.log(req.body.message.photo[1])
       try {
       const msgId = req.body.message.from.id;
       const fileId = req.body.message.photo[1].file_id;
